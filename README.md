@@ -43,15 +43,13 @@ void setup() {
 }
 void loop() {
   if (IrReceiver.decode()) {
-    // Ignore repeat signals from holding down buttons
+    
     if (!(IrReceiver.decodedIRData.flags & IRDATA_FLAGS_IS_REPEAT)) {
       
-      // Audio Beep
       digitalWrite(BUZZER_PIN, HIGH);
       delay(60);
       digitalWrite(BUZZER_PIN, LOW);
       
-      // Toggle LED State
       ledState = !ledState;
       digitalWrite(LED_PIN, ledState);
       
